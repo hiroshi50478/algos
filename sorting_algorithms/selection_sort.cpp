@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 using namespace std;
 
 
@@ -10,7 +9,6 @@ void print(int* data, int length) {
 	}
 	cout << endl;
 }
-
 
 void selection_sort(int* data, int length) {
 	int index_min;

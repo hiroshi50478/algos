@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 using namespace std;
 
 
@@ -10,7 +9,6 @@ void print(int* data, int length) {
 	}
 	cout << endl;
 }
-
 
 void insertion_sort(int* data, int length) {
 	for (int i = 1; i < length; ++i) {
