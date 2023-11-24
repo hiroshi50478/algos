@@ -11,7 +11,7 @@ typedef struct Node {
 class LinkedList {
 public:
 	LinkedList();
-	// ~LinkedList();
+	~LinkedList();
 	void push(int index, int value);
 	int get(int index);
 	void pop(int index);
@@ -26,9 +26,15 @@ LinkedList::LinkedList() {
 	length = 0;
 }
 
-// LinkedList::~LinkedList() {
-
-// }
+LinkedList::~LinkedList() {
+	Node* previous_node = NULL;
+	Node* current_node = head;
+	while (current_node != NULL) {
+		previous_node = current_node;
+		current_node = current_node->next;
+		free(previous_node);
+	}
+}
 
 void LinkedList::push(int index, int value) {
 	if (index == 0) {
@@ -38,14 +44,14 @@ void LinkedList::push(int index, int value) {
 		head = new_node;
 	} else {
 		int current_index = 0;
-		Node* previos_node = head;
+		Node* previous_node = head;
 		while (current_index < index - 1) {
 			++current_index;
-			previos_node = previos_node->next;
+			previous_node = previous_node->next;
 		}
 		Node* new_node = (Node*)malloc(sizeof(Node));
-		previos_node->next = new_node;
-		new_node->next = previos_node->next;
+		previous_node->next = new_node;
+		new_node->next = previous_node->next;
 		new_node->value = value;
 	}
 	++length;
